@@ -75,5 +75,6 @@ public class RenameTest {
                 .statusCode(200)
                 .body("name", org.hamcrest.Matchers.equalTo("Artem Gusev"));
 
+        
     }
 }
