@@ -3,8 +3,8 @@ package iteration2;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class DepositTest {
 
@@ -19,7 +19,7 @@ public class DepositTest {
                 .header("Authorization", "Basic YWRtaW46YWRtaW4=")
                 .body("""
                         {
-                          "username": "victor944",
+                          "username": "victor945",
                           "password": "Kate2000#",
                           "role": "USER"
                         }
@@ -34,7 +34,7 @@ public class DepositTest {
                 .contentType(ContentType.JSON)
                 .body("""
                         {
-                          "username": "victor944",
+                          "username": "victor945",
                           "password": "Kate2000#"
                         }
                         """)
@@ -73,5 +73,15 @@ public class DepositTest {
                 .then()
                 .assertThat()
                 .statusCode(200);
+
+        given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", userAuthHeader)
+                .when()
+                .get("http://localhost:4111/api/v1/customer/accounts")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("find { it.id == " + accountId + " }.balance", equalTo(100.50f));
     }
 }

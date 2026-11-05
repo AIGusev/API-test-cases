@@ -23,7 +23,7 @@ public class RenameTest {
                 .header("Authorization", "Basic YWRtaW46YWRtaW4=")
                 .body("""
                         {
-                          "username": "Arseniy144",
+                          "username": "Arseniy145",
                           "password": "Pavelpavel1#",
                           "role": "USER"
                         }
@@ -38,7 +38,7 @@ public class RenameTest {
                 .contentType(ContentType.JSON)
                 .body("""
                         {
-                          "username": "Arseniy144",
+                          "username": "Arseniy145",
                           "password": "Pavelpavel1#"
                         }
                         """)
@@ -57,13 +57,23 @@ public class RenameTest {
                 .header("Authorization", userAuthHeader)
                 .body("""
                         {
-                          "name": "John Smith"
+                          "name": "Artem Gusev"
                         }
                         """)
                 .put("http://localhost:4111/api/v1/customer/profile")
                 .then()
                 .assertThat()
                 .statusCode(200);
+
+        given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", userAuthHeader)
+                .when()
+                .get("http://localhost:4111/api/v1/customer/profile") // <-- Правильный URL для профиля
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("name", org.hamcrest.Matchers.equalTo("Artem Gusev"));
 
     }
 }

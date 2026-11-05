@@ -26,7 +26,7 @@ public class TransferTest {
                 .header("Authorization", "Basic YWRtaW46YWRtaW4=")
                 .body("""
                         {
-                          "username": "Pavel14",
+                          "username": "Pavel16",
                           "password": "Pavelpavel1#",
                           "role": "USER"
                         }
@@ -41,7 +41,7 @@ public class TransferTest {
                 .contentType(ContentType.JSON)
                 .body("""
                         {
-                          "username": "Pavel14",
+                          "username": "Pavel16",
                           "password": "Pavelpavel1#"
                         }
                         """)
@@ -105,6 +105,17 @@ public class TransferTest {
                 .then()
                 .assertThat()
                 .statusCode(200);
+
+        given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", userAuthHeader)
+                .when()
+                .get("http://localhost:4111/api/v1/customer/accounts")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body("find { it.id == %d }.balance".formatted(firstAccountId), org.hamcrest.Matchers.equalTo(50.00f))
+                .body("find { it.id == %d }.balance".formatted(secondAccountId), org.hamcrest.Matchers.equalTo(50.50f));
 
     }
 }
