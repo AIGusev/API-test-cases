@@ -1,0 +1,23 @@
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\n//TIP To <b>Run</b> code, press <shortcut actionId=\"Run\"/> or\r\n// click the <icon src=\"AllIcons.Actions.Execute\"/> icon in the gutter.\r\npublic class Main {\r\n    static void main() {\r\n        //TIP Press <shortcut actionId=\"ShowIntentionActions\"/> with your caret at the highlighted text\r\n        // to see how IntelliJ IDEA suggests fixing it.\r\n        IO.println(String.format(\"Hello and welcome!\"));\r\n\r\n        for (int i = 1; i <= 5; i++) {\r\n            //TIP Press <shortcut actionId=\"Debug\"/> to start debugging your code. We have set one <icon src=\"AllIcons.Debugger.Db_set_breakpoint\"/> breakpoint\r\n            // for you, but you can always add more by pressing <shortcut actionId=\"ToggleLineBreakpoint\"/>.\r\n            IO.println(\"i = \" + i);\r\n        }\r\n    }\r\n}\r\n//Делаю изменения для ДЗ\r\n// Делаю еще один комментарий, т.к. в ПулРеквест 2 ветки одинаковые\r\n\r\n
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	(revision c2b507dffa5e14b38c76ed5e08c85546679afa8d)
++++ b/src/main/java/org/example/Main.java	(date 1793297849592)
+@@ -6,12 +6,12 @@
+     static void main() {
+         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+         // to see how IntelliJ IDEA suggests fixing it.
+-        IO.println(String.format("Hello and welcome!"));
++        System.out.println(String.format("Hello and welcome!"));
+ 
+         for (int i = 1; i <= 5; i++) {
+             //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
+             // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
+-            IO.println("i = " + i);
++            System.out.println("i = " + i);
+         }
+     }
+ }
