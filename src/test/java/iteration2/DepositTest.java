@@ -83,5 +83,6 @@ public class DepositTest {
                 .assertThat()
                 .statusCode(200)
                 .body("find { it.id == " + accountId + " }.balance", equalTo(100.50f));
+        
     }
 }
